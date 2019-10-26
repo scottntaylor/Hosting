@@ -26,7 +26,7 @@ $("#food-button").on("click", function (event) {
 function getFoodData(searchVal) {
     var queryParams = searchVal;
     console.log("queryParams: " + queryParams);
-    var queryURL = `https://api.spoonacular.com/recipes/search?includeIngredients=“${queryParams}“&?&apiKey=${APIKEY}`;
+    var queryURL = `https://api.spoonacular.com/recipes/complexSearch?includeIngredients=“${queryParams}“&?&apiKey=${APIKEY}`;
     console.log(queryURL);
     $.ajax({
         url: queryURL,

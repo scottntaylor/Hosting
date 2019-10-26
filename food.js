@@ -13,9 +13,9 @@
 var APIKEY = "9aacd4f040604f24bdf021521839307c"
 
 //CLICK HANDLER
-$("#button").on("click", function (event) {
+$("#food-button").on("click", function (event) {
     event.preventDefault();
-    var searchVal = $("#foodText").val();
+    var searchVal = $("#textarea1").val();
     console.log(searchVal);
     getFoodData(searchVal);
 

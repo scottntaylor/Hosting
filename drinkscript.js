@@ -5,7 +5,7 @@ $("#drink-button").on("click", function () {
 });
 
 function findDrinkByIngredient(ingredient) {
-  var ingredientURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + ingredient;
+  var ingredientURL = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`;
   $.ajax({
     url: ingredientURL,
     method: "GET"
@@ -20,7 +20,7 @@ function findDrinkByIngredient(ingredient) {
 };
 
 function findRecipe(IDnum) {
-  var cocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + IDnum;
+  var cocktailURL = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${IDnum}`;
   $.ajax({
     url: cocktailURL,
     method: "GET"
@@ -30,11 +30,24 @@ function findRecipe(IDnum) {
     console.log(drinkName);
     var instruction = response.drinks[0].strInstructions;
     console.log(instruction);
-    var drinkData = response.drinks[0];
-    for (var i = 0; i <drinkData.strIngredient[i]; i++) {
-      var ingredientArray = drinkData.strIngredient[i];
-      console.log(ingredientArray);
+    
+    var keys = Object.keys(response.drinks[0])
+
+    for (var i = 0; i < keys.length; i++) {
+      if (keys[i].includes("strIngredient") && response.drinks[0][keys[i]] != null) {
+        console.log(response.drinks[0][keys[i]])
+      }
     }
+    
+    for (var i = 0;i < keys.length; i++) {
+      if (keys[i].includes("strMeasure") && response.drinks[0][keys[i]] != null) {
+        console.log(response.drinks[0][keys[i]])
+    }}
+    // var drinkData = response.drinks[0];
+    // for (var i = 0; i <drinkData.strIngredient[i]; i++) {
+    //   var ingredientArray = drinkData.strIngredient[i];
+    //   console.log(ingredientArray);
+    //}
     //var ingArray = [drinkData.strIngredient1, drinkData.strIngredient2, drinkData.strIngredient3, ];
     //console.log(ingArray);
     
@@ -50,5 +63,5 @@ function findRecipe(IDnum) {
     // }
     //var ingredients = response.
     //var measurements = response. (array)
-  });
-};
+    });
+  };

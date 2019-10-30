@@ -1,62 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
+
 <body>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-   <link rel="stylesheet" href="style.css">
-   <nav>
-       <div class="nav-wrapper">
-           <a href="#" class="brand-logo">Hosting</a>
-           <ul id="nav-mobile" class="right hide-on-med-and-down">
-               <li><a href="collapsible.html">Favorites</a></li>
-           </ul>
-       </div>
-   </nav>
-   <div class="container">
-       <div class="row" id="Row1">
-               <div class="col s7 push-s5"><span class="flow-text" id="foodText">The recipe will display here!</span></div>
-               <div class="col s5 pull-s7"><span class="flow-text"><div class="input-field col s12">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Hosting</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="collapsible.html">Favorites</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row" id="Row1">
+            <div class="col s7 push-s5"><span class="flow-text" id="foodText">The recipe will display here!</span></div>
+            <div class="col s5 pull-s7"><span class="flow-text">
+                    <div class="input-field col s12">
 
-                       <textarea id="textarea1" class="materialize-textarea"></textarea>
-                       <label for="textarea1"></label><a class="waves-effect waves-light btn" id="food-button">Search</a>
-                     </div></span>
-                     <P id="Result1"></P>
-                     <P id="Result2"></P>
-                     <P id="Result3"></P>
-                     <P id="Result4"></P>
-                     <P id="Result5"></P>
-                   </div>
-       </div>
-   </div>
-   <div class="container">
-       <div class="row" id="Row2">
-               <div class="col s7 push-s5"><span class="flow-text">The recipe will display here!</span></div>
-               <div class="col s5 pull-s7"><span class="flow-text"><div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label for="textarea1"></label><a class="waves-effect waves-light btn"
+                            id="food-button">Search</a>
+                        <label for="textarea1"></label><a class="waves-effect waves-light btn"
+                            id="clear-button">Clear</a>
+                    </div>
+                </span>
+                <div id="searchresults">
+                    <P id="Result1"></P>
+                    <P id="Result2"></P>
+                    <P id="Result3"></P>
+                    <P id="Result4"></P>
+                    <P id="Result5"></P>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" id="Row2">
+            <div class="col s7 push-s5"><span class="flow-text">The recipe will display here!</span></div>
+            <div class="col s5 pull-s7"><span class="flow-text">
+                    <div class="input-field col s12">
+                        <textarea id="textarea-drink" class="materialize-textarea"></textarea>
+                        <label for="textarea1"></label><a class="waves-effect waves-light btn"
+                            id="drink-button">Search</a>
+                    </div>
+                </span>
+                <P>Result 1</P>
+                <P>Result 2</P>
+                <P>Result 3</P>
+                <P>Result 4</P>
+                <P>Result 5</P>
+            </div>
+        </div>
+    </div>
 
-<label for="textarea1"></label><a class="waves-effect waves-light btn" id="drink-button">Search</a>
-         <label for="textarea1">What are we drinking?</label>
-                     </div></span>
-                     <P>Result1</P>
-                     <P>Result2</P>
-                     <P>Result3</P>
-                     <P>Result4</P>
-                     <P>Result5</P>
-
-                   </div>
-       </div>
-   </div>
-   </div>
-
-   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-   <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="script.js"></script>
     <script src="drinkscript.js"></script>
-   <script src="food.js"></script>
+    <script src="food.js"></script>
 
 </body>
+
 </html>

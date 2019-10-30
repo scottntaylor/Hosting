@@ -14,13 +14,22 @@ var APIKEY = "9aacd4f040604f24bdf021521839307c"
 
 //CLICK HANDLER
 $("#food-button").on("click", function (event) {
+    clearSearch();
     event.preventDefault();
     var searchVal = $("#textarea1").val();
     console.log(searchVal);
     getFoodData(searchVal);
-
-
 })
+
+//CLEAR RECIPE AREA
+function clearRecipe() {
+    $("#foodText").empty();
+  }
+
+  //CLEAR SEARCH AREA
+function clearSearch() {
+    $("#searchresults").empty();
+  }
 
 //GET FOOD DATA USING SEARCH VARIABLE
 function getFoodData(searchVal) {
@@ -35,13 +44,24 @@ function getFoodData(searchVal) {
         console.log(response)
 
         for (var i = 1; i <= 5; i++) {
-            var recipename = response.results[i].title;
+
+            var recipename = $("<button class='recipebutton'>" + response.results[i].title + "</button>").appendTo(resultdiv);
             console.log(recipename);
-            var resultdiv = "#Result"+i;
-            console.log("resultdiv"+resultdiv);
-            $(resultdiv).text(recipename);
+            var resultdiv = "#Result" + i;
+            console.log("resultdiv" + resultdiv);
         }
 
-    }
-    )
+        $(".recipebutton").on("click", function (event) {
+            clearRecipe();
+            var reciperightside = $("<div>" + this.textContent + "</div>").appendTo(foodText);
+        }) 
+    })
 }
+
+
+
+        // //CLICK HANDLER
+        // $("#recipebutton").on("click", function (event) {
+        //     event.preventDefault();
+        //     alert("button clicked");
+        // })

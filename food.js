@@ -64,25 +64,33 @@ function getFoodData(searchVal) {
             var recipeid = $(this).attr("data-id");
             console.log(recipeid);
             getRecipeData(recipeid);
-            function getRecipeData(recipeid) {
-                var queryURLid = `https://api.spoonacular.com/recipes/${recipeid}/information?&apiKey=${APIKEY}`;
-                $.ajax({
-                    url: queryURLid,
-                    method: "GET"
-                }).then(function (response) {
-                    console.log(response)
-                })
-
-            }
-
     })
 })
 }
+function getRecipeData(recipeid) {
+    var queryURLid = `https://api.spoonacular.com/recipes/${recipeid}/information?&apiKey=${APIKEY}`;
+    $.ajax({
+        url: queryURLid,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response)
+        var recipedetails = {
+            Time: response.readyInMinutes,
+            Servings: response.servings,
+            Instructions: response.instructions,
+            Image: response.image,
+        }
+        console.log(recipedetails);
+        $("#time").append("Time: " + recipedetails.Time);
+        $("#servings").append("Servings: " + recipedetails.Servings);
+        $("#instructions").append("Instructions: " + recipedetails.Instructions);
+        $("#images").attr('src', recipedetails.Image);
 
+        for (var i =0; i <= 5; i++) {
+            $("<li>" + response.extendedIngredients[i].original + "</li>").appendTo("#ingredients");
+        }
 
+    })
 
-        // //CLICK HANDLER
-        // $("#recipebutton").on("click", function (event) {
-        //     event.preventDefault();
-        //     alert("button clicked");
-        // })
+}
+

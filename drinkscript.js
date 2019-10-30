@@ -52,3 +52,12 @@ function findRecipe(IDnum) {
     //var measurements = response. (array)
   });
 };
+
+
+// let keys = object.keys(obj);
+//keys.forEach(function(key){
+  //for (var i = 0; i <keys.length; i++){
+//if (key.indexOf('a') !=null){
+  //console.log(key);
+//}
+//});

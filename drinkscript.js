@@ -30,38 +30,50 @@ function findRecipe(IDnum) {
     console.log(drinkName);
     var instruction = response.drinks[0].strInstructions;
     console.log(instruction);
-    
+
     var keys = Object.keys(response.drinks[0])
 
     for (var i = 0; i < keys.length; i++) {
       if (keys[i].includes("strIngredient") && response.drinks[0][keys[i]] != null) {
         console.log(response.drinks[0][keys[i]])
+        var listIngredient = response.drinks[0][keys[i]]
       }
     }
-    
-    for (var i = 0;i < keys.length; i++) {
+
+    for (var i = 0; i < keys.length; i++) {
       if (keys[i].includes("strMeasure") && response.drinks[0][keys[i]] != null) {
         console.log(response.drinks[0][keys[i]])
-    }}
-    // var drinkData = response.drinks[0];
-    // for (var i = 0; i <drinkData.strIngredient[i]; i++) {
-    //   var ingredientArray = drinkData.strIngredient[i];
-    //   console.log(ingredientArray);
-    //}
-    //var ingArray = [drinkData.strIngredient1, drinkData.strIngredient2, drinkData.strIngredient3, ];
-    //console.log(ingArray);
-    
-// var ingredient = drinkData.forEach
-// if (ingredient != null) {
-// return ingredient;
-// console.log(ingredient);
+        var measurement = response.drinks[0][keys[i]]
+      }
+    }
 
-//     };
-    
-    //for (var i = 0; i < 15; i ++){
-    //   var ingArray = 
-    // }
-    //var ingredients = response.
-    //var measurements = response. (array)
-    });
-  };
+  //   var result = measurement.reduce(function (result, field, index) {
+  //     result[listIngredient[index]] = field;
+  //     return result;
+  //   }, {});
+
+  //   console.log(result)
+  // };
+  // var drinkData = response.drinks[0];
+  // for (var i = 0; i <drinkData.strIngredient[i]; i++) {
+  //   var ingredientArray = drinkData.strIngredient[i];
+  //   console.log(ingredientArray);
+  //}
+  //var ingArray = [drinkData.strIngredient1, drinkData.strIngredient2, drinkData.strIngredient3, ];
+  //console.log(ingArray);
+
+  // var ingredient = drinkData.forEach
+  // if (ingredient != null) {
+  // return ingredient;
+  // console.log(ingredient);
+
+  //     };
+
+  //for (var i = 0; i < 15; i ++){
+  //   var ingArray = 
+  // }
+  //var ingredients = response.
+  //var measurements = response. (array)
+  });
+
+};

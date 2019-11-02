@@ -22,14 +22,14 @@
     <div class="container">
         <div class="row" id="Row1">
             <div class="col s7 push-s5"><span class="flow-text" id="foodText">
-            </span>
-                    <p id="time"></p>
-                    <p id="servings"></p>
-                    <p id="instructions"></p>
-                    <div id="ingredients"></div>
-                    <div>
-                        <img id="images" src="">
-                    </div>
+                </span>
+                <p id="time"></p>
+                <p id="servings"></p>
+                <p id="instructions"></p>
+                <div id="ingredients"></div>
+                <div>
+                    <img id="images" src="">
+                </div>
 
             </div>
             <div class="col s5 pull-s7"><span class="flow-text">
@@ -43,37 +43,41 @@
                     </div>
                 </span>
                 <div id="searchresults">
-                    <!--<P id="Result1"></P>
-                    <P id="Result2"></P>
-                    <P id="Result3"></P>
-                    <P id="Result4"></P>
-                    <P id="Result5"></P>-->
+
                 </div>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row" id="Row2">
-            <div class="col s7 push-s5"><span class="flow-text">The recipe will display here!</span></div>
-            <div class="col s5 pull-s7"><span class="flow-text">
-                    <div class="input-field col s12">
-                        <textarea id="textarea-drink" class="materialize-textarea"></textarea>
-                        <label for="textarea1"></label><a class="waves-effect waves-light btn"
-                            id="drink-button">Search</a>
+    <div class=“container”>
+        <div class=“row” id=“Row2”>
+            <div class=“col s7 push-s5"><span class=“flow-text” id=“drinkText”>
+                </span>
+                <h5 id=“drinkTitle”></h5>
+                <h6 id=“ingredientTitle”></h6>
+                <div id=“drinkIngredientMeasurement”></div>
+                <h6 id=“instructionsTitle”></h6>
+                <div id=“drink-instruction”></div>
+                <div>
+                    <img id=“drink-images”>
+                </div>
+            </div>
+            <div class=“col s5 pull-s7”><span class=“flow-text”>
+                    <div class=“input-field col s12”>
+                        <textarea id=“textarea-drink” class=“materialize-textarea”></textarea>
+                        <label for=“textarea2"></label><a class=“waves-effect waves-light btn”
+                            id=“drink-button”>Search</a>
+                        <label for=“textarea2”></label><a class=“waves-effect waves-light btn”
+                            id=“clear-button2”>Clear</a>
                     </div>
                 </span>
-                <P>Result 1</P>
-                <P>Result 2</P>
-                <P>Result 3</P>
-                <P>Result 4</P>
-                <P>Result 5</P>
+                <div id=“drinkResults”>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="script.js"></script>
     <script src="drinkscript.js"></script>
     <script src="food.js"></script>
 

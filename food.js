@@ -55,18 +55,18 @@ function getFoodData(searchVal) {
         console.log(response)
 
         for (var i = 1; i <= 5; i++) {
-            //decare var for section to append to
-            var resultsection = $("#searchresults");
-            var resultdiv = "#Result" + i;
-            
+            //old
+            //var resultdiv = "#Result" + i;
             //old
             //var recipename = $("<button class='recipebutton'>" + response.results[i].title + "</button>").appendTo(resultdiv);
+            //decare var for section to append to
+            var resultsection = $("#searchresults");
             var recipename = $("<button class='recipebutton'>" + response.results[i].title + "</button>" + "<br>");
-            console.log("recipename" + recipename);
-            console.log("resultdiv" + resultdiv);
+            //console.log("recipename" + recipename);
+            //console.log("resultdiv" + resultdiv);
             recipename.attr("data-id", response.results[i].id);
             resultsection.append(recipename);
-            console.log(response.results[i].id);
+            //console.log(response.results[i].id);
         }
         //Append recipe button text to right side
         $(".recipebutton").on("click", function (event) {
@@ -75,8 +75,8 @@ function getFoodData(searchVal) {
             var recipeid = $(this).attr("data-id");
             console.log(recipeid);
             getRecipeData(recipeid);
+        })
     })
-})
 }
 function getRecipeData(recipeid) {
     var queryURLid = `https://api.spoonacular.com/recipes/${recipeid}/information?&apiKey=${APIKEY}`;
@@ -102,7 +102,7 @@ function getRecipeData(recipeid) {
         $("#instructions").append("Instructions: " + recipedetails.Instructions);
         $("#images").attr('src', recipedetails.Image);
 
-        for (var i =0; i <= recipe.extendedIngredients.length; i++) {
+        for (var i = 0; i <= recipe.extendedIngredients.length; i++) {
             $("<li>" + recipe.extendedIngredients[i].original + "</li>").appendTo("#ingredients");
         }
 

@@ -1,8 +1,12 @@
 #Row1{
     background-color: beige;
-
 }
 
 #Row2{
-background-color: aqua;
+    background-color: aqua;
+}
+
+#drink-images {
+    height: 400px;
+    width: 280px;
 }

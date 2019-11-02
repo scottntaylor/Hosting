@@ -1,3 +1,12 @@
+$("#clear-button2").on("click", function (event) {
+  event.preventDefault();
+  clearDrinks();
+});
+
+function clearDrinks() {
+  $("#drinkResults").empty();
+}
+
 $("#drink-button").on("click", function () {
   let ingredient = $("#textarea-drink").val();
   findDrinkByIngredient(ingredient);
@@ -5,7 +14,7 @@ $("#drink-button").on("click", function () {
 });
 
 function findDrinkByIngredient(ingredient) {
-  var ingredientURL = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`;
+  var ingredientURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + ingredient;
   $.ajax({
     url: ingredientURL,
     method: "GET"
@@ -14,66 +23,59 @@ function findDrinkByIngredient(ingredient) {
     for (var i = 0; i < 5; i++) {
       var IDnum = response.drinks[i].idDrink;
       console.log(IDnum);
-      findRecipe(IDnum);
+      findRecipe(IDnum, i + 1);
+      $("#drinkResults").empty()
     }
   });
 };
 
-function findRecipe(IDnum) {
+function findRecipe(IDnum, id) {
   var cocktailURL = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${IDnum}`;
   $.ajax({
     url: cocktailURL,
     method: "GET"
   }).then(function (response) {
     console.log(response);
-    var drinkName = response.drinks[0].strDrink;
-    console.log(drinkName);
-    var instruction = response.drinks[0].strInstructions;
-    console.log(instruction);
+    var curDrink = response.drinks[0];
+    var drinkName = curDrink.strDrink;
+    var drinkResult = $("#drinkResults");
+    var drinkNameDiv = $("<button class='drinksbutton'>" + drinkName + "</button>" + "</br>")
+    drinkResult.append(drinkNameDiv);
+    drinkNameDiv.attr("id", "id" + id)
+    drinkNameDiv.on("click", function () {
+      $("#drinkTitle").text(drinkName)
+      getIngredientMeasurement(response)
+      $("#ingredientTitle").empty()
+      $("#ingredientTitle").append("Ingredients and Measurement:" + "<br>")
+      $("#drink-instruction").empty()
+      $("#instructionsTitle").empty()
+      $("#instructionsTitle").append("Instructions:" + "<br>")
+      var instruction = response.drinks[0].strInstructions;
+      var instructionDiv = $("<div>" + instruction + "</div>")
+      $("#drink-instruction").append(instructionDiv)
+      console.log(instruction);
+      var drinkThumb = curDrink.strDrinkThumb
+      var drinkImages = $("#drink-images").attr("src", drinkThumb)
+    })
 
-    var keys = Object.keys(response.drinks[0])
-
-    for (var i = 0; i < keys.length; i++) {
-      if (keys[i].includes("strIngredient") && response.drinks[0][keys[i]] != null) {
-        console.log(response.drinks[0][keys[i]])
-        var listIngredient = response.drinks[0][keys[i]]
+    function getIngredientMeasurement(response) {
+      var drinkIngredient = {};
+      for (var i = 1; i < 15; i++) {
+        var curIngredient = curDrink["strIngredient" + i];
+        if (curIngredient !== null) {
+          drinkIngredient[curIngredient] = curDrink["strMeasure" + i];
+          if (drinkIngredient[curIngredient] === null) {
+            drinkIngredient[curIngredient] = "Optional"
+          }
+        }
       }
-    }
-
-    for (var i = 0; i < keys.length; i++) {
-      if (keys[i].includes("strMeasure") && response.drinks[0][keys[i]] != null) {
-        console.log(response.drinks[0][keys[i]])
-        var measurement = response.drinks[0][keys[i]]
+      $("#drinkIngredientMeasurement").empty();
+      console.log(drinkIngredient)
+      for (var [key, value] of Object.entries(drinkIngredient)) {
+        console.log(key, value)
+        var ingredientDiv = $("<div>" + key + ": " + value + "</div>");
+        $("#drinkIngredientMeasurement").append(ingredientDiv);
       }
-    }
-
-  //   var result = measurement.reduce(function (result, field, index) {
-  //     result[listIngredient[index]] = field;
-  //     return result;
-  //   }, {});
-
-  //   console.log(result)
-  // };
-  // var drinkData = response.drinks[0];
-  // for (var i = 0; i <drinkData.strIngredient[i]; i++) {
-  //   var ingredientArray = drinkData.strIngredient[i];
-  //   console.log(ingredientArray);
-  //}
-  //var ingArray = [drinkData.strIngredient1, drinkData.strIngredient2, drinkData.strIngredient3, ];
-  //console.log(ingArray);
-
-  // var ingredient = drinkData.forEach
-  // if (ingredient != null) {
-  // return ingredient;
-  // console.log(ingredient);
-
-  //     };
-
-  //for (var i = 0; i < 15; i ++){
-  //   var ingArray = 
-  // }
-  //var ingredients = response.
-  //var measurements = response. (array)
-  });
-
-};
+    };
+  })
+}
